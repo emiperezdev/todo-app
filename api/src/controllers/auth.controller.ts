@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/User";
 import bcrypt from "bcrypt";
+import RequestAuth from "../entities/requestAuth.entity";
 
 export const register = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
@@ -28,11 +29,10 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const foundUser = await User.findOne({ email: email });
-  if (!foundUser) return res.status(400).json({ message: "User not found" });
+  if (!foundUser) return userNotFound(res);
 
   const validPassword = await bcrypt.compare(password, foundUser.password);
-  if (!validPassword)
-    return res.status(400).json({ message: "Invalid password" });
+  if (!validPassword) return userNotFound(res);
 
   res.cookie("token", foundUser.getAuthToken()).json({
     id: foundUser._id,
@@ -51,6 +51,19 @@ export const logout = (req: Request, res: Response) => {
   res.sendStatus(200);
 };
 
-export const profile = (req: Request, res: Response) => {
-  res.json("profile");
+export const profile = async (req: RequestAuth, res: Response) => {
+  const foundUser = await User.findById(req.user.id);
+  if (!foundUser) return userNotFound(res);
+
+  res.json({
+    id: foundUser._id,
+    username: foundUser.username,
+    email: foundUser.email,
+    createdAt: foundUser.createdAt,
+    updatedAt: foundUser.updatedAt,
+  });
+};
+
+const userNotFound = (res: Response) => {
+  return res.status(400).json({ message: "User not found" });
 };
