@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import config from 'config';
 
-const db =  'mongodb://localhost/todo-app';
+const db: string = config.get('db');
 
 const initializeDB = () => {
   mongoose.connect(db)

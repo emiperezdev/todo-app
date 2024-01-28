@@ -16,7 +16,7 @@ export const register = async (req: Request, res: Response) => {
   await newUser.validate();
   const savedUser = await newUser.save();
 
-  res.status(201).json({
+  res.cookie('token', savedUser.getAuthToken()).status(201).json({
     id: savedUser._id,
     username: savedUser.username,
     email: savedUser.email,
