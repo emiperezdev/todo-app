@@ -2,30 +2,35 @@ import mongoose from "mongoose";
 import config from "config";
 import jwt from "jsonwebtoken";
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    trim: true,
-    minLength: 3,
-    maxLength: 30,
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+      minLength: 3,
+      maxLength: 30,
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+      minLength: 13,
+      maxLength: 30,
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      minLength: 5,
+      maxLength: 255,
+    },
   },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true,
-    minLength: 13,
-    maxLength: 30,
-  },
-  password: {
-    type: String,
-    required: true,
-    trim: true,
-    minLength: 5,
-    maxLength: 255,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 userSchema.methods.getAuthToken = function () {
   const token = jwt.sign(
@@ -43,7 +48,7 @@ userSchema.methods.getAuthToken = function () {
   return token;
 };
 
-declare module 'mongoose' {
+declare module "mongoose" {
   interface Document {
     getAuthToken: () => string;
   }
