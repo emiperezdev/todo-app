@@ -2,9 +2,11 @@ import { Request, Response } from "express";
 import User from "../models/User";
 import bcrypt from "bcrypt";
 import RequestAuth from "../entities/requestAuth.entity";
+import RegisterEntity from "../entities/register.entity";
+import LoginEntity from "../entities/login.entity";
 
 export const register = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { username, password, email } = req.body as RegisterEntity;
   const newUser = new User({
     username,
     email,
@@ -27,7 +29,7 @@ export const register = async (req: Request, res: Response) => {
 };
 
 export const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body as LoginEntity;
   const foundUser = await User.findOne({ email: email });
   if (!foundUser) return userNotFound(res);
 

@@ -1,4 +1,4 @@
-export default interface Register {
+export default interface RegisterEntity {
   username: string;
   email: string;
   password: string;

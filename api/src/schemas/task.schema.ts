@@ -9,3 +9,5 @@ const createTaskSchema = (task: TaskEntity) => {
 
   return schema.validate(task)
 };
+
+export default createTaskSchema

@@ -1,4 +1,4 @@
-export default interface Login {
+export default interface LoginEntity {
   email: string;
   password: string;
 }
