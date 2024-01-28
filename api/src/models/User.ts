@@ -20,10 +20,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
     minLength: 5,
-    maxLength: 30,
+    maxLength: 255,
   },
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;
