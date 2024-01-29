@@ -7,6 +7,11 @@ import LoginEntity from "../entities/login.entity";
 
 export const register = async (req: Request, res: Response) => {
   const { username, password, email } = req.body as RegisterEntity;
+
+  const userFund = await User.findOne({ email: email });
+  if (userFund)
+    return res.status(400).json("The email already exists");
+
   const newUser = new User({
     username,
     email,
@@ -67,5 +72,5 @@ export const profile = async (req: RequestAuth, res: Response) => {
 };
 
 const userNotFound = (res: Response) => {
-  return res.status(400).json({ message: "User not found" });
+  return res.status(400).json("User not found");
 };
