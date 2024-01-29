@@ -9,8 +9,7 @@ export const register = async (req: Request, res: Response) => {
   const { username, password, email } = req.body as RegisterEntity;
 
   const userFund = await User.findOne({ email: email });
-  if (userFund)
-    return res.status(400).json("The email already exists");
+  if (userFund) return res.status(400).json("The email already exists");
 
   const newUser = new User({
     username,
@@ -39,7 +38,7 @@ export const login = async (req: Request, res: Response) => {
   if (!foundUser) return userNotFound(res);
 
   const validPassword = await bcrypt.compare(password, foundUser.password);
-  if (!validPassword) return userNotFound(res);
+  if (!validPassword) return res.status(400).send("Invalid password");
 
   res.cookie("token", foundUser.getAuthToken()).json({
     id: foundUser._id,

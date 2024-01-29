@@ -12,18 +12,18 @@ const apiClient = new APIClient<RegisterDto>("/register");
 const useRegister = (handler: () => void) => {
   const setUser = useUserState((s) => s.setUser);
   const setAuth = useAuthState((s) => s.setIsAuth);
-  const setError = useErrorState(s => s.setErrors);
+  const setError = useErrorState((s) => s.setErrors);
 
   const navigate = useNavigate();
   return useMutation({
-    mutationFn: apiClient.register,
+    mutationFn: apiClient.post,
 
     onSuccess: (savedRegister, newRegister) => {
       setUser(newRegister);
       setAuth();
       console.log(newRegister);
       handler();
-      navigate('/tasks')
+      navigate("/tasks");
     },
 
     onError: (error, newRegister, context) => {
