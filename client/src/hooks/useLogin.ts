@@ -5,9 +5,9 @@ import useErrorState from "../state/useErrorState";
 import { AxiosError } from "axios";
 import useUserState from "../state/useUserState";
 import useAuthState from "../state/useAuthState";
-import RegisterDto from "../entities/register.entity";
+import LoginDto from "../entities/login.entity";
 
-const apiClient = new APIClient<RegisterDto>("/login");
+const apiClient = new APIClient<LoginDto>("/login");
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ const useLogin = () => {
     mutationFn: apiClient.post,
 
     onSuccess: (savedLogin, newLogin) => {
-      setUser(newLogin);
-      console.log(newLogin);
+      setUser(savedLogin);
+      console.log(savedLogin);
       setIsAuth(true);
       navigate("/tasks");
     },

@@ -3,6 +3,7 @@ import useVerifyToken from "../hooks/useVerifyToken";
 import Cookies from "js-cookie";
 import useAuthState from "../state/useAuthState";
 import useUserState from "../state/useUserState";
+import { NavBar } from "../components/NavBar";
 
 const Layout = () => {
   const cookies = Cookies.get();
@@ -22,7 +23,12 @@ const Layout = () => {
     }
   }
 
-  return <Outlet />;
+  return (
+    <div>
+      <NavBar />
+      <Outlet />
+    </div>
+  );
 };
 
 export default Layout;

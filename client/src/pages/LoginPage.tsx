@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
-import LoginDto from "../entities/login.entity";
 import useLogin from "../hooks/useLogin";
 import useErrorState from "../state/useErrorState";
 import { Link } from "react-router-dom";
+import RegisterDto from "../entities/register.entity";
 
 export const LoginPage = () => {
   const {
     handleSubmit,
     formState: { errors },
     register,
-  } = useForm<LoginDto>();
+  } = useForm<RegisterDto>();
 
   const error = useErrorState((s) => s.errors);
 

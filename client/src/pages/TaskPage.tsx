@@ -2,7 +2,6 @@ import useGetTasks from "../hooks/useGetTasks";
 
 export const TaskPage = () => {
   const { data, error, isLoading } = useGetTasks();
-  console.log(data);
 
   if (error) return <p>{error.message}</p>;
   if (data?.length === 0) return <p>No Tasks Created</p>;
