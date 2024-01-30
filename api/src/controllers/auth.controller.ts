@@ -4,6 +4,8 @@ import bcrypt from "bcrypt";
 import RequestAuth from "../entities/requestAuth.entity";
 import RegisterEntity from "../entities/register.entity";
 import LoginEntity from "../entities/login.entity";
+import jwt from "jsonwebtoken";
+import config from "config";
 
 export const register = async (req: Request, res: Response) => {
   const { username, password, email } = req.body as RegisterEntity;
@@ -24,11 +26,9 @@ export const register = async (req: Request, res: Response) => {
   const savedUser = await newUser.save();
 
   res.cookie("token", savedUser.getAuthToken()).status(201).json({
-    id: savedUser._id,
+    _id: savedUser._id,
     username: savedUser.username,
     email: savedUser.email,
-    createdAt: savedUser.createdAt,
-    updatedAt: savedUser.updatedAt,
   });
 };
 
@@ -41,11 +41,9 @@ export const login = async (req: Request, res: Response) => {
   if (!validPassword) return res.status(400).send("Invalid password");
 
   res.cookie("token", foundUser.getAuthToken()).json({
-    id: foundUser._id,
+    _id: foundUser._id,
     username: foundUser.username,
     email: foundUser.email,
-    createdAt: foundUser.createdAt,
-    updatedAt: foundUser.updatedAt,
   });
 };
 
@@ -67,6 +65,15 @@ export const profile = async (req: RequestAuth, res: Response) => {
     email: foundUser.email,
     createdAt: foundUser.createdAt,
     updatedAt: foundUser.updatedAt,
+  });
+};
+
+export const verifyToken = async (req: RequestAuth, res: Response) => {
+  const foundUser = await User.findById(req.user.id);
+  res.json({
+    id: foundUser?._id,
+    username: foundUser?.username,
+    email: foundUser?.email,
   });
 };
 

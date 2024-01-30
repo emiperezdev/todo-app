@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { login, logout, profile, register } from '../controllers/auth.controller';
+import { login, logout, profile, register, verifyToken } from '../controllers/auth.controller';
 import validator from '../middleware/validator';
 import { loginSchema, registerSchema } from '../schemas/auth.schema';
 import auth from '../middleware/auth';
@@ -12,6 +12,8 @@ authRouter.post('/login', validator(loginSchema), login);
 
 authRouter.post('/logout', logout);
 
-authRouter.post('/profile', auth, profile);
+authRouter.get('/profile', auth, profile);
+
+authRouter.get('/verify', auth, verifyToken);
 
 export default authRouter;

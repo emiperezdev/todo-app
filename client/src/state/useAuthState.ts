@@ -3,12 +3,12 @@ import { create } from "zustand";
 
 interface AuthStateAction {
   isAuth: boolean;
-  setIsAuth: () => void;
+  setIsAuth: (boolean: boolean) => void;
 }
 
 const useAuthState = create<AuthStateAction>((set) => ({
   isAuth: false,
-  setIsAuth: () => set(() => ({ isAuth: true})),
+  setIsAuth: (boolean) => set(() => ({ isAuth: boolean})),
 }));
 
 if (process.env.NODE_ENV === "development")

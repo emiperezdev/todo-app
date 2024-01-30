@@ -3,8 +3,8 @@ import RegisterDto from "../entities/register.entity";
 import { mountStoreDevtool } from "simple-zustand-devtools";
 
 interface UserStateAction {
-  user: RegisterDto;
-  setUser: (userInfo: RegisterDto) => void;
+  user: RegisterDto | null;
+  setUser: (userInfo?: RegisterDto) => void;
 }
 
 const useUserState = create<UserStateAction>((set) => ({

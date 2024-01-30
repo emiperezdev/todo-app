@@ -20,7 +20,7 @@ const useRegister = (handler: () => void) => {
 
     onSuccess: (savedRegister, newRegister) => {
       setUser(newRegister);
-      setAuth();
+      setAuth(true);
       console.log(newRegister);
       handler();
       navigate("/tasks");

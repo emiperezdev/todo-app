@@ -17,7 +17,6 @@ export const LoginPage = () => {
 
   const onSubmit = handleSubmit((data) => {
     login.mutate(data);
-    console.log(data);
   });
 
   return (
