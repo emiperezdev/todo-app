@@ -5,7 +5,11 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-class APIClient<T> {
+interface Data {
+  _id: string;
+}
+
+class APIClient<T extends Data> {
   private endpoint: string;
 
   constructor(endpoint: string) {
@@ -18,6 +22,18 @@ class APIClient<T> {
 
   get = () => {
     return axiosInstance.get<T>(this.endpoint).then(res => res.data);
+  }
+
+  delete = (id: string) => {
+    return axiosInstance.delete(this.endpoint + '/' + id).then(res => res.data)
+  }
+
+  update = (data: T) => {
+    return axiosInstance.put(this.endpoint, + '/' + data._id).then(res => res.data);
+  }
+
+  getAll = () => {
+    return axiosInstance.get<T[]>(this.endpoint).then(res => res.data);
   }
 
 }

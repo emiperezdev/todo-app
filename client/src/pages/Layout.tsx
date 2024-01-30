@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import useAuthState from "../state/useAuthState";
 import useUserState from "../state/useUserState";
 
-export const Layout = () => {
+const Layout = () => {
   const cookies = Cookies.get();
   const setIsAuth = useAuthState((s) => s.setIsAuth);
   const setUser = useUserState((s) => s.setUser);
@@ -24,3 +24,5 @@ export const Layout = () => {
 
   return <Outlet />;
 };
+
+export default Layout;

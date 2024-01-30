@@ -5,7 +5,7 @@ import { TaskPage } from "./pages/TaskPage";
 import { TaskFormPage } from "./pages/TaskFormPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { PrivateRoutes } from "./pages/PrivateRoutes";
-import { Layout } from "./pages/Layout";
+import Layout from "./pages/Layout";
 
 const router = createBrowserRouter([
   {
