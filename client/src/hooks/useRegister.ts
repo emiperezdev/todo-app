@@ -18,7 +18,7 @@ const useRegister = (handler: () => void) => {
   return useMutation({
     mutationFn: apiClient.post,
 
-    onSuccess: (savedRegister, newRegister) => {
+    onSuccess: (_savedRegister, newRegister) => {
       setUser(newRegister);
       setAuth(true);
       console.log(newRegister);
@@ -27,7 +27,7 @@ const useRegister = (handler: () => void) => {
       setError('');
     },
 
-    onError: (error, newRegister, context) => {
+    onError: (error, _newRegister, _context) => {
       if (error instanceof AxiosError) {
         console.log(error.response!.data);
         setError(error.response!.data);

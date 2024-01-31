@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import APIClient from "../services/api-client";
 import TaskDto from "../entities/task.entity";
 import useUpdateTask from "../hooks/useUpdateTask";
-import TaskUpdateDto from "../entities/taskupdate.entity";
 
 export const TaskFormPage = () => {
   const {
@@ -29,7 +28,6 @@ export const TaskFormPage = () => {
   const onSubmit = handleSubmit((data) => {
     if (params.id) {
       data._id = params.id;
-      console.log(data);
       updateTask.mutate(data);
       console.log(data);
     } else {

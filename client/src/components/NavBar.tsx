@@ -25,7 +25,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/add-task"}
-                className="bg-sky-700 px-4 py-1 rounded-md"
+                className="bg-sky-700 hover:bg-sky-800 px-4 py-1 rounded-md"
               >
                 Add
               </Link>

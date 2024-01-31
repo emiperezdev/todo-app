@@ -25,7 +25,7 @@ const useDeleteTask = () => {
       return { previousTasks };
     },
 
-    onError: (error, id, context) => {
+    onError: (_error, _id, context) => {
       if (!context) return;
 
       queryClient.setQueryData<TaskDto[]>(CACHE_KEY_TASKS, context.previousTasks);

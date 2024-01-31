@@ -13,23 +13,21 @@ const useLogin = () => {
   const navigate = useNavigate();
   const setError = useErrorState((s) => s.setErrors);
 
-  const setUser = useUserState(s => s.setUser);
-  const setIsAuth = useAuthState(s => s.setIsAuth);
+  const setUser = useUserState((s) => s.setUser);
+  const setIsAuth = useAuthState((s) => s.setIsAuth);
 
   return useMutation({
     mutationFn: apiClient.post,
 
-    onSuccess: (savedLogin, newLogin) => {
+    onSuccess: (savedLogin, _newLogin) => {
       setUser(savedLogin);
       setIsAuth(true);
       navigate("/tasks");
-      setError('');
+      setError("");
     },
 
-    onError: (error, newLogin, context) => {
-      if (error instanceof AxiosError) {
-        setError(error.response?.data);
-      }
+    onError: (error, _newLogin, _context) => {
+      if (error instanceof AxiosError) setError(error.response?.data);
     },
   });
 };

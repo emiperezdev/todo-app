@@ -14,7 +14,7 @@ const useUpdateTask = () => {
   return useMutation({
     mutationFn: (task: TaskUpdateDto) => apiClient.update(task),
 
-    onSuccess: (savedTask: TaskUpdateDto, newTask: TaskUpdateDto) => {
+    onSuccess: (savedTask: TaskUpdateDto, _newTask: TaskUpdateDto) => {
       console.log(savedTask);
       navigate("/tasks");
     },
