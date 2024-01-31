@@ -9,7 +9,10 @@ export const TaskPage = () => {
   if (data?.length === 0)
     return (
       <div className="flex justify-center">
-        <Link className="my-4 p-4 bg-cyan-50 text-black rounded-md" to="/add-task">
+        <Link
+          className="my-4 p-4 bg-cyan-50 text-black rounded-md"
+          to="/add-task"
+        >
           Create Tasks
         </Link>
       </div>
@@ -20,7 +23,7 @@ export const TaskPage = () => {
       {isLoading && (
         <button
           type="button"
-          className="bg-indigo-500 px-5 rounded-md m-4 pb-5"
+          className="bg-sky-700 px-5 rounded-md m-4 pb-5"
           disabled
         >
           <svg

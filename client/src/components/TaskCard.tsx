@@ -10,7 +10,7 @@ export const TaskCard = ({ task }: Props) => {
   const deleteTask = useDeleteTask();
 
   return (
-    <div className="bg-zinc-800 max-w-md w-full rounded-md p-6">
+    <div className="bg-sky-700 max-w-md w-full rounded-md p-6">
       <h1 className="text-2xl font-bold">{task.title}</h1>
       <p className="text-slate-300">{task.description}</p>
       <p className="text-slate-300 ">{new Date(task.date).toDateString()}</p>

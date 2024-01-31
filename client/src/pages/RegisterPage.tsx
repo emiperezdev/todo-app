@@ -22,7 +22,7 @@ export const RegisterPage = () => {
 
   return (
     <div className="flex h-[calc(100vh-200px)] justify-center items-center">
-      <div className="bg-zinc-800 max-w-md p-10 rounded-md mx-auto">
+      <div className="bg-sky-900 max-w-md p-10 rounded-md mx-auto">
         <h1 className="text-3xl text-center font-bold">Register</h1>
 
         {error && (
@@ -32,7 +32,7 @@ export const RegisterPage = () => {
         )}
         <form onSubmit={onSubmit}>
           <input
-            className="w-full bg-zinc-700 text-white my-2 px-4 py-2 rounded-md"
+            className="w-full bg-sky-100 text-black my-2 px-4 py-2 rounded-md"
             {...register("username", { required: true })}
             type="text"
             name="username"
@@ -42,7 +42,7 @@ export const RegisterPage = () => {
             <p className="text-red-500">Username is required</p>
           )}
           <input
-            className="w-full bg-zinc-700 text-white my-2 px-4 py-2 rounded-md"
+            className="w-full bg-sky-100 text-black my-2 px-4 py-2 rounded-md"
             {...register("email", { required: true })}
             type="email"
             name="email"
@@ -50,7 +50,7 @@ export const RegisterPage = () => {
           />
           {errors.email && <p className="text-red-500">Email is required</p>}
           <input
-            className="w-full bg-zinc-700 text-white my-2 px-4 py-2 rounded-md"
+            className="w-full bg-sky-100 text-black my-2 px-4 py-2 rounded-md"
             {...register("password", { required: true })}
             type="password"
             name="password"
@@ -66,7 +66,7 @@ export const RegisterPage = () => {
 
         <p className="mt-3 flex gap-x-2 justify-between">
           Already have an account?
-          <Link className="text-sky-500" to={"/login"}>
+          <Link className="text-sky-400" to={"/login"}>
             Login
           </Link>
         </p>

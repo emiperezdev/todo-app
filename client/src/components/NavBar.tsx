@@ -16,7 +16,7 @@ export const NavBar = () => {
   };
 
   return (
-    <nav className="bg-zinc-700 flex justify-between py-5 px-10">
+    <nav className="bg-sky-900 flex justify-between py-5 px-10">
       <h1 className="text-2xl font-bold">Tasks Manager</h1>
       <ul className="flex gap-x-4">
         {isAuth ? (
@@ -25,7 +25,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/add-task"}
-                className="bg-indigo-500 px-4 py-1 rounded-md"
+                className="bg-sky-700 px-4 py-1 rounded-md"
               >
                 Add
               </Link>
@@ -33,7 +33,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/tasks"}
-                className="bg-indigo-500 px-4 py-1 rounded-md"
+                className="bg-sky-700 px-4 py-1 rounded-md"
               >
                 Tasks
               </Link>
@@ -41,7 +41,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to="/login"
-                className="bg-indigo-500 px-4 py-1 rounded-md"
+                className="bg-sky-700 px-4 py-1 rounded-md"
                 onClick={logout}
               >
                 Logout
@@ -53,7 +53,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/login"}
-                className="bg-indigo-500 px-4 py-1 rounded-md"
+                className="bg-sky-700 px-4 py-1 rounded-md"
               >
                 Login
               </Link>
@@ -61,7 +61,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/register"}
-                className="bg-indigo-500 px-4 py-1 rounded-md"
+                className="bg-sky-700 px-4 py-1 rounded-md"
               >
                 Register
               </Link>
