@@ -2,6 +2,12 @@ import { useForm } from "react-hook-form";
 import TodoDto from "../entities/task.entity";
 import useAddTask from "../hooks/useAddTask";
 import useErrorState from "../state/useErrorState";
+import { useLocation, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import APIClient from "../services/api-client";
+import TaskDto from "../entities/task.entity";
+import useUpdateTask from "../hooks/useUpdateTask";
+import TaskUpdateDto from "../entities/taskupdate.entity";
 
 export const TaskFormPage = () => {
   const {
@@ -9,22 +15,50 @@ export const TaskFormPage = () => {
     reset,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = useForm<TodoDto>();
 
+  const { pathname } = useLocation();
+  const params = useParams();
+
+  const updateTask = useUpdateTask();
   const addTask = useAddTask(() => {
     reset();
   });
 
   const onSubmit = handleSubmit((data) => {
-    addTask.mutate(data);
+    if (params.id) {
+      data._id = params.id;
+      console.log(data);
+      updateTask.mutate(data);
+      console.log(data);
+    } else {
+      addTask.mutate(data);
+    }
   });
 
-  const error = useErrorState(s => s.errors);
+  const error = useErrorState((s) => s.errors);
+
+  // TODO
+  useEffect(() => {
+    const loadTask = async () => {
+      if (params.id) {
+        const apiClient = new APIClient<TaskDto>("/tasks");
+        const task = await apiClient.getbyId(params.id);
+        setValue("title", task.title);
+        setValue("description", task.description);
+      }
+    };
+
+    loadTask();
+  }, []);
 
   return (
     <div className="flex h-[calc(100vh-200px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md 2-full p-10 rounded-md">
-        <h1 className="text-3xl text-center font-bold mb-3">Add Task</h1>
+        <h1 className="text-3xl text-center font-bold mb-3">
+          {pathname === "/add-task" ? "Add Task" : "Edit Task"}
+        </h1>
         {error && (
           <div className="rounded-md bg-red-500 p-2 mt-6 text-white text-center">
             {error}
@@ -49,7 +83,7 @@ export const TaskFormPage = () => {
             <p className="text-red-500">Description is required</p>
           )}
           <button className="border p-3 rounded-md mt-2 w-full" type="submit">
-            Add Task
+            {pathname === "/add-task" ? "Add" : "Edit"}
           </button>
         </form>
       </div>

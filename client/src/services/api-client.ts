@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
 });
 
 interface Data {
-  _id: string;
+  _id?: string;
 }
 
 class APIClient<T extends Data> {
@@ -21,21 +21,30 @@ class APIClient<T extends Data> {
   };
 
   get = () => {
-    return axiosInstance.get<T>(this.endpoint).then(res => res.data);
-  }
+    return axiosInstance.get<T>(this.endpoint).then((res) => res.data);
+  };
 
   delete = (id: string) => {
-    return axiosInstance.delete(this.endpoint + '/' + id).then(res => res.data)
-  }
+    return axiosInstance
+      .delete(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
 
   update = (data: T) => {
-    return axiosInstance.put(this.endpoint, + '/' + data._id).then(res => res.data);
-  }
+    return axiosInstance
+      .put(this.endpoint +"/" + data._id, data)
+      .then((res) => res.data);
+  };
 
   getAll = () => {
-    return axiosInstance.get<T[]>(this.endpoint).then(res => res.data);
-  }
+    return axiosInstance.get<T[]>(this.endpoint).then((res) => res.data);
+  };
 
+  getbyId = (id: string) => {
+    return axiosInstance
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
 }
 
 export default APIClient;

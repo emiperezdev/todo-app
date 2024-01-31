@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import TaskDto from "../entities/task.entity";
 import useDeleteTask from "../hooks/useDeleteTask";
 
@@ -20,12 +21,12 @@ export const TaskCard = ({ task }: Props) => {
         >
           Delete
         </button>
-        <button
-          className="bg-sky-500 py-1 px-3 rounded-md"
-          onClick={() => console.log('Edit', task._id)}
+        <Link
+          to={`/task/${task._id}`}
+          className="bg-sky-500 py-2 px-3 rounded-md"
         >
           Edit
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import TaskEntity from "../entities/task.entity";
 
 const createTaskSchema = (task: TaskEntity) => {
   const schema = Joi.object({
+    _id: Joi.string().optional(),
     title: Joi.string().min(3).max(30).required(),
     description: Joi.string().min(3).max(50).required(),
   });
