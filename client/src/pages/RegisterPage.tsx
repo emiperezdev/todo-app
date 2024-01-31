@@ -21,7 +21,7 @@ export const RegisterPage = () => {
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] justify-center items-center">
+    <div className="flex h-[calc(100vh-200px)] justify-center items-center">
       <div className="bg-zinc-800 max-w-md p-10 rounded-md mx-auto">
         <h1 className="text-3xl text-center font-bold">Register</h1>
 

@@ -24,7 +24,7 @@ const Layout = () => {
   }
 
   return (
-    <div>
+    <div className="container mx-auto">
       <NavBar />
       <Outlet />
     </div>

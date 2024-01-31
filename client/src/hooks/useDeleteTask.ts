@@ -9,7 +9,7 @@ interface DeleteTaskContext {
   previousTasks?: TaskDto[];
 }
 
-const useDeleteTodo = () => {
+const useDeleteTask = () => {
   const queryClient = useQueryClient();
 
   return useMutation<TaskDto, Error, string, DeleteTaskContext>({
@@ -19,7 +19,7 @@ const useDeleteTodo = () => {
       const previousTasks = queryClient.getQueryData<TaskDto[]>(CACHE_KEY_TASKS);
 
       queryClient.setQueryData<TaskDto[]>(CACHE_KEY_TASKS, (tasks) =>
-      tasks?.filter((task) => task.id !== id)
+      tasks?.filter((task) => task._id !== id)
       );
 
       return { previousTasks };
@@ -33,4 +33,4 @@ const useDeleteTodo = () => {
   });
 };
 
-export default useDeleteTodo;
+export default useDeleteTask;

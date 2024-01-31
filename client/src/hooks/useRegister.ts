@@ -24,6 +24,7 @@ const useRegister = (handler: () => void) => {
       console.log(newRegister);
       handler();
       navigate("/tasks");
+      setError('');
     },
 
     onError: (error, newRegister, context) => {

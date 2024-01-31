@@ -2,14 +2,14 @@ import { useForm } from "react-hook-form";
 import useLogin from "../hooks/useLogin";
 import useErrorState from "../state/useErrorState";
 import { Link } from "react-router-dom";
-import RegisterDto from "../entities/register.entity";
+import LoginDto from "../entities/login.entity";
 
 export const LoginPage = () => {
   const {
     handleSubmit,
     formState: { errors },
     register,
-  } = useForm<RegisterDto>();
+  } = useForm<LoginDto>();
 
   const error = useErrorState((s) => s.errors);
 
@@ -20,7 +20,7 @@ export const LoginPage = () => {
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
+    <div className="flex h-[calc(100vh-200px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md p-10 rounded-md mx-auto">
         <h1 className="text-3xl font-bold text-center">Login</h1>
 

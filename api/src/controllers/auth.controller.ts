@@ -74,6 +74,8 @@ export const verifyToken = async (req: RequestAuth, res: Response) => {
     id: foundUser?._id,
     username: foundUser?.username,
     email: foundUser?.email,
+    createdAt: foundUser?.createdAt,
+    updatedAt: foundUser?.updatedAt,
   });
 };
 

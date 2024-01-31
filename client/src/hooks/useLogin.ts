@@ -21,15 +21,14 @@ const useLogin = () => {
 
     onSuccess: (savedLogin, newLogin) => {
       setUser(savedLogin);
-      console.log(savedLogin);
       setIsAuth(true);
       navigate("/tasks");
+      setError('');
     },
 
     onError: (error, newLogin, context) => {
       if (error instanceof AxiosError) {
         setError(error.response?.data);
-        console.log(error);
       }
     },
   });
