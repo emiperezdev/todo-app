@@ -82,7 +82,10 @@ export const TaskFormPage = () => {
           {errors.description && (
             <p className="text-red-500">Description is required</p>
           )}
-          <button className="border p-3 rounded-md mt-2 w-full" type="submit">
+          <button
+            className="border p-3 rounded-md mt-2 w-full bg-sky-800 hover:bg-sky-900"
+            type="submit"
+          >
             {pathname === "/add-task" ? "Add" : "Edit"}
           </button>
         </form>

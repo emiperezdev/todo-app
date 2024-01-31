@@ -48,14 +48,14 @@ export const LoginPage = () => {
           {errors.password && (
             <p className="text-red-500">Password is required</p>
           )}
-          <button className="border p-3 rounded-md mt-2 w-full" type="submit">
+          <button className="bg-sky-800 hover:bg-sky-900 border p-3 rounded-md mt-2 w-full" type="submit">
             Login
           </button>
         </form>
 
         <p className="mt-3 flex gap-x-2 justify-between">
           Don't have an account?
-          <Link className="text-sky-400" to={"/register"}>
+          <Link className="text-sky-400 hover:text-sky-500" to={"/register"}>
             Sign up
           </Link>
         </p>

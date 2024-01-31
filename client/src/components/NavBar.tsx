@@ -33,7 +33,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/tasks"}
-                className="bg-sky-700 px-4 py-1 rounded-md"
+                className="bg-sky-700 hover:bg-sky-800 px-4 py-1 rounded-md"
               >
                 Tasks
               </Link>
@@ -41,7 +41,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to="/login"
-                className="bg-sky-700 px-4 py-1 rounded-md"
+                className="bg-sky-700 hover:bg-sky-800 px-4 py-1 rounded-md"
                 onClick={logout}
               >
                 Logout
@@ -53,7 +53,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/login"}
-                className="bg-sky-700 px-4 py-1 rounded-md"
+                className="bg-sky-700 hover:bg-sky-800 px-4 py-1 rounded-md"
               >
                 Login
               </Link>
@@ -61,7 +61,7 @@ export const NavBar = () => {
             <li>
               <Link
                 to={"/register"}
-                className="bg-sky-700 px-4 py-1 rounded-md"
+                className="bg-sky-700 hover:bg-sky-800 px-4 py-1 rounded-md"
               >
                 Register
               </Link>
